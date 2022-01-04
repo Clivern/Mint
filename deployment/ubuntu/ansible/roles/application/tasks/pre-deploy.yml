@@ -1,0 +1,42 @@
+# Copyright 2022 Clivern. All rights reserved.
+# Use of this source code is governed by the MIT
+# license that can be found in the LICENSE file.
+
+---
+- name: Create the application user
+  user:
+    name: "{{ app_user }}"
+    state: present
+  tags: [ pre-deploy ]
+
+- name: Create the application group
+  group:
+    name: "{{ app_group }}"
+    system: yes
+    state: present
+  tags: [ pre-deploy ]
+
+- name: Add the application user to the application group
+  user:
+    name: "{{ app_user }}"
+    group: "{{ app_group }}"
+    state: present
+  tags: [ pre-deploy ]
+
+- name: Ensure releases directory exists
+  file:
+    path: /srv/app/releases
+    owner: "{{ app_user }}"
+    group: "{{ app_group }}"
+    mode: '0755'
+    state: directory
+  tags: [ pre-deploy ]
+
+- name: Ensure logs directory exists
+  file:
+    path: /srv/app/shared/logs
+    owner: "{{ app_user }}"
+    group: "{{ app_group }}"
+    mode: '0755'
+    state: directory
+  tags: [ pre-deploy ]

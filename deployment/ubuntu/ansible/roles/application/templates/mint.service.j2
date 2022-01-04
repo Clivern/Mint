@@ -1,0 +1,20 @@
+[Unit]
+Description=Mint Web Service
+After=network.target
+
+StartLimitIntervalSec=500
+StartLimitBurst=5
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/srv/app/current
+Restart=on-failure
+RestartSec=5s
+ExecStart=/srv/app/current/mint server -c /srv/app/current/config.prod.yml
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

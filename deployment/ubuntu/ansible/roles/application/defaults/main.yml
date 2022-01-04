@@ -1,0 +1,14 @@
+# Copyright 2022 Clivern. All rights reserved.
+# Use of this source code is governed by the MIT
+# license that can be found in the LICENSE file.
+
+---
+# app_user: appmgt
+# app_group: appmgt
+# app_version: 1.0.0
+# download_link: https://example-cdn.com/mint-v1.0.0.tar.gz"
+# app_port: 80
+# app_hostname: 127.0.0.1
+# app_api_key: 6c68b836-6f8e-465e-b59f-89c1db53afca
+# database_host: localhost
+

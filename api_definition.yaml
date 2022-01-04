@@ -1,0 +1,173 @@
+openapi: 3.0.1
+info:
+  title: Mint
+  description: 🌿 A URL Lookup Service in Golang
+  contact:
+    email: hello@clivern.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 1.0.0
+externalDocs:
+  description: Find out more about mint
+  url: https://gitlab.com/clivern/mint
+servers:
+  - url: https://example.com/
+
+paths:
+  /_health:
+    get:
+      tags:
+        - Liveness
+      summary: Get system health status
+      responses:
+        '200':
+          description: System is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+        '500':
+          description: System is down
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+  /_ready:
+    get:
+      tags:
+        - Readiness
+      summary: Get system readiness
+      responses:
+        '200':
+          description: System is ready to accept traffic
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReadyResponse'
+        '500':
+          description: System not ready to accept traffic
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReadyResponse'
+
+  "/urlinfo/1/{hostname}:{port}/{uri}":
+    get:
+      tags:
+        - URL Info
+      summary: Get the URL Info
+      parameters:
+        - name: hostname
+          in: path
+          description: The hostname
+          required: true
+          schema:
+            type: string
+        - name: port
+          in: path
+          description: The port
+          required: true
+          schema:
+            type: integer
+        - name: uri
+          in: path
+          description: The URI
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The URL is not safe
+          content: {}
+        '400':
+          description: Invalid Request
+          content: {}
+        '404':
+          description: The URL is safe
+          content: {}
+        '500':
+          description: Internal Server Error
+          content: {}
+
+  /api/v1/url:
+    post:
+      security:
+        - api_key: []
+      tags:
+        - URL
+      summary: Add a new unsafe URL to the database
+      requestBody:
+        description: The URL info Request
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/URLRequest'
+        required: true
+      responses:
+        '202':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/URLResponse'
+        '400':
+          description: Invalid Request
+          content: {}
+        '500':
+          description: Internal Server Error
+          content: {}
+      x-codegen-request-body-name: body
+
+components:
+  securitySchemes:
+    api_key:
+      description: The API Key
+      type: apiKey
+      name: X-API-KEY
+      in: header
+
+  schemas:
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+
+    ReadyResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        errorMessage:
+          type: string
+
+    URLRequest:
+      type: object
+      properties:
+        hostname:
+          type: string
+        port:
+          type: integer
+          format: int
+        uri:
+          type: string
+
+    URLResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int
+        hostname:
+          type: string
+        port:
+          type: integer
+          format: int
+        uri:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string

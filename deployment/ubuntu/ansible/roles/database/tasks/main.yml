@@ -1,0 +1,80 @@
+# Copyright 2022 Clivern. All rights reserved.
+# Use of this source code is governed by the MIT
+# license that can be found in the LICENSE file.
+
+---
+- name: Install MySQL
+  apt:
+    pkg:
+      - python3-pip
+      - libmysqlclient-dev
+      - python3-mysqldb
+      - mysql-server
+      - mysql-client
+    state: present
+  tags: [ database ]
+
+- name: Make sure PyMySQL is present
+  pip:
+    name: pymysql
+    state: present
+  tags: [ database ]
+
+- name: Ensure mysql is started
+  service:
+    name: mysql
+    state: started
+    enabled: yes
+  tags: [ database ]
+
+- name: Set the root password
+  mysql_user:
+    name: "{{ root_username }}"
+    password: "{{ root_password }}"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+  notify: restart mysql
+  tags: [ database ]
+
+- name: Remove the test database
+  mysql_db:
+    name: test
+    state: absent
+    login_user: "{{ root_username }}"
+    login_password: "{{ root_password }}"
+  tags: [ database ]
+
+- name: Removes all anonymous user accounts
+  mysql_user:
+    name: ''
+    host_all: yes
+    state: absent
+    login_user: "{{ root_username }}"
+    login_password: "{{ root_password }}"
+  tags: [ database ]
+
+- name: Create application database
+  mysql_db:
+    name: "{{ app_db_name }}"
+    state: present
+    login_user: "{{ root_username }}"
+    login_password: "{{ root_password }}"
+  tags: [ database ]
+
+- name: Create application database user
+  mysql_user:
+    name: "{{ app_db_username }}"
+    password: "{{ app_db_password }}"
+    priv: "{{ app_db_name }}.*:ALL"
+    state: present
+    host: "{{ allow_access_from }}"
+    login_user: "{{ root_username }}"
+    login_password: "{{ root_password }}"
+  notify: restart mysql
+  tags: [ database ]
+
+- name: Create .my.cnf file
+  template:
+    src: "my.cnf.j2"
+    dest: "/root/.my.cnf"
+    mode: 0600
+  tags: [ database ]

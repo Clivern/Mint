@@ -1,0 +1,18 @@
+# Copyright 2022 Clivern. All rights reserved.
+# Use of this source code is governed by the MIT
+# license that can be found in the LICENSE file.
+
+---
+logrotate_scripts:
+  - name: mint
+    log_dir: '/srv/app/shared/logs'
+    log_extension: 'log'
+    options:
+      - rotate 7
+      - daily
+      - size 10M
+      - missingok
+      - compress
+      - create 0644 root www-data
+    scripts:
+        postrotate: "systemctl restart mint.service > /dev/null 2>&1 || true"

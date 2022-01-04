@@ -1,0 +1,106 @@
+# Copyright 2022 Clivern. All rights reserved.
+# Use of this source code is governed by the MIT
+# license that can be found in the LICENSE file.
+
+---
+- hosts: mint_server
+
+  vars_files:
+    - ./vars/default.yml
+
+  vars_prompt:
+    - name: "enable_fw"
+      prompt: "Enable Firewall"
+      default: yes
+      private: no
+
+    - name: "update_pkgs"
+      prompt: "Update Packages (yes or no)"
+      default: yes
+      private: no
+
+    - name: "upgrade_pkgs"
+      prompt: "Upgrade Packages (yes or no)"
+      default: yes
+      private: no
+
+    - name: "root_username"
+      prompt: "MySQL Database Root Username"
+      default: "root"
+      private: no
+
+    - name: "root_password"
+      prompt: "MySQL Database Root Password"
+      default: "root"
+      private: no
+
+    - name: "api_key"
+      prompt: "Application API Key"
+      default: "6c68b836-6f8e-465e-b59f-89c1db53afca"
+      private: no
+
+    - name: "app_db_name"
+      prompt: "Application MySQL Database Name"
+      default: "mint"
+      private: no
+
+    - name: "app_db_username"
+      prompt: "Application MySQL Database Username"
+      default: "admin"
+      private: no
+
+    - name: "app_db_password"
+      prompt: "Application MySQL Database Password"
+      default: "secret"
+      private: no
+
+    - name: "allow_access_from"
+      prompt: "Application User Access (% or 127.0.0.1 or remote ip)"
+      default: "127.0.0.1"
+      private: no
+
+    - name: "app_user"
+      prompt: "Application User"
+      default: "appmgt"
+      private: no
+
+    - name: "app_group"
+      prompt: "Application Group"
+      default: "appmgt"
+      private: no
+
+    - name: "app_version"
+      prompt: "Application Version"
+      default: "1.0.0"
+      private: no
+
+    - name: "download_link"
+      prompt: "Application Version"
+      default: "https://clivern.com/mint-v1.0.1.tar.gz"
+      private: no
+
+    - name: "app_port"
+      prompt: "Application Port"
+      default: "80"
+      private: no
+
+    - name: "app_hostname"
+      prompt: "Application Hostname"
+      default: "127.0.0.1"
+      private: no
+
+    - name: "app_api_key"
+      prompt: "Application API Key"
+      default: "6c68b836-6f8e-465e-b59f-89c1db53afca"
+      private: no
+
+    - name: "database_host"
+      prompt: "Database Hostname"
+      default: "localhost"
+      private: no
+
+  roles:
+    - common
+    - logrotate
+    - database
+    - application

@@ -1,0 +1,50 @@
+# App configs
+app:
+  # App name
+  name: ${APP_NAME:-mint}
+  # Env mode (dev or prod)
+  mode: ${APP_MODE:-prod}
+  # HTTP port
+  port: ${APP_PORT:-{{ app_port }}}
+  # Hostname
+  hostname: ${APP_HOSTNAME:-{{ app_hostname }}}
+  # TLS configs
+  tls:
+    status: ${APP_TLS_STATUS:-off}
+    crt_path: ${APP_TLS_PEMPATH:-cert/server.crt}
+    key_path: ${APP_TLS_KEYPATH:-cert/server.key}
+
+  # API Configs
+  api:
+      key: ${APP_API_KEY:-{{ app_api_key }}}
+
+  # Global timeout
+  timeout: ${APP_TIMEOUT:-50}
+
+  # Application Database
+  database:
+      # Database driver (sqlite3, mysql)
+      driver: ${APP_DATABASE_DRIVER:-mysql}
+      # Database Host
+      host: ${APP_DATABASE_MYSQL_HOST:-{{ database_host }}}
+      # Database Port
+      port: ${APP_DATABASE_MYSQL_PORT:-3306}
+      # Database Name
+      name: ${APP_DATABASE_MYSQL_DATABASE:-{{ app_db_name }}}
+      # Database Username
+      username: ${APP_DATABASE_MYSQL_USERNAME:-{{ app_db_username }}}
+      # Database Password
+      password: ${APP_DATABASE_MYSQL_PASSWORD:-{{ app_db_password }}}
+      # Max DB Open Connections
+      max_open_conns: ${APP_DATABASE_MAX_OPEN_CONNS:-5}
+      # DB Connection Max Lifetime
+      conns_max_lifetime: ${APP_DATABASE_CONNS_MAX_LIFETIME:-10}
+
+  # Log configs
+  log:
+    # Log level, it can be debug, info, warn, error, panic, fatal
+    level: ${APP_LOG_LEVEL:-info}
+    # Output can be stdout or abs path to log file /var/logs/mint.log
+    output: ${APP_LOG_OUTPUT:-/srv/app/shared/logs/prod.log}
+    # Format can be json
+    format: ${APP_LOG_FORMAT:-json}
