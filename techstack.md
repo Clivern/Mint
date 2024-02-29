@@ -3,16 +3,16 @@
 ## Tech Stack
 Clivern/Mint is built on the following main stack:
 
-- [Ansible](http://www.ansible.com/) – Server Configuration and Automation
 - [Golang](http://golang.org/) – Languages
-- [MySQL](http://www.mysql.com) – Databases
-- [Prometheus](http://prometheus.io/) – Monitoring Tools
-- [Protobuf](https://developers.google.com/protocol-buffers/) – Serialization Frameworks
 - [Echo](https://echo.labstack.com) – Microframeworks (Backend)
-- [GORM](https://gorm.io/) – Object Relational Mapper (ORM)
-- [cURL](http://curl.haxx.se/) – File Transfer
+- [Protobuf](https://developers.google.com/protocol-buffers/) – Serialization Frameworks
 - [Cloud DB for Mysql](https://www.ncloud.com/product/database/cloudDbMysql) – SQL Database as a Service
+- [GORM](https://gorm.io/) – Object Relational Mapper (ORM)
+- [MySQL](http://www.mysql.com) – Databases
+- [Ansible](http://www.ansible.com/) – Server Configuration and Automation
 - [Docker](https://www.docker.com/) – Virtual Machine Platforms & Containers
+- [Prometheus](http://prometheus.io/) – Monitoring Tools
+- [cURL](http://curl.haxx.se/) – File Transfer
 
 Full tech stack [here](/techstack.md)
 
@@ -22,16 +22,16 @@ Full tech stack [here](/techstack.md)
 ## Tech Stack
 Clivern/Mint is built on the following main stack:
 
-- <img width='25' height='25' src='https://img.stackshare.io/service/663/ElOjna20.png' alt='Ansible'/> [Ansible](http://www.ansible.com/) – Server Configuration and Automation
 - <img width='25' height='25' src='https://img.stackshare.io/service/1005/O6AczwfV_400x400.png' alt='Golang'/> [Golang](http://golang.org/) – Languages
-- <img width='25' height='25' src='https://img.stackshare.io/service/1025/logo-mysql-170x170.png' alt='MySQL'/> [MySQL](http://www.mysql.com) – Databases
-- <img width='25' height='25' src='https://img.stackshare.io/service/2501/default_3cf1b307194b26782be5cb209d30360580ae5b3c.png' alt='Prometheus'/> [Prometheus](http://prometheus.io/) – Monitoring Tools
-- <img width='25' height='25' src='https://img.stackshare.io/service/4393/ma2jqJKH_400x400.png' alt='Protobuf'/> [Protobuf](https://developers.google.com/protocol-buffers/) – Serialization Frameworks
 - <img width='25' height='25' src='https://img.stackshare.io/service/4996/9P0MlumU_400x400.jpg' alt='Echo'/> [Echo](https://echo.labstack.com) – Microframeworks (Backend)
-- <img width='25' height='25' src='https://img.stackshare.io/service/5194/default_c656a82cbf499a944563022a13ebbd62c9f3aa4b.png' alt='GORM'/> [GORM](https://gorm.io/) – Object Relational Mapper (ORM)
-- <img width='25' height='25' src='https://img.stackshare.io/service/6552/curl-logo.png' alt='cURL'/> [cURL](http://curl.haxx.se/) – File Transfer
+- <img width='25' height='25' src='https://img.stackshare.io/service/4393/ma2jqJKH_400x400.png' alt='Protobuf'/> [Protobuf](https://developers.google.com/protocol-buffers/) – Serialization Frameworks
 - <img width='25' height='25' src='https://img.stackshare.io/service/21275/default_078eb0ae2b56280a937ed073a3ba4332291f9ba8.png' alt='Cloud DB for Mysql'/> [Cloud DB for Mysql](https://www.ncloud.com/product/database/cloudDbMysql) – SQL Database as a Service
+- <img width='25' height='25' src='https://img.stackshare.io/service/5194/default_c656a82cbf499a944563022a13ebbd62c9f3aa4b.png' alt='GORM'/> [GORM](https://gorm.io/) – Object Relational Mapper (ORM)
+- <img width='25' height='25' src='https://img.stackshare.io/service/1025/logo-mysql-170x170.png' alt='MySQL'/> [MySQL](http://www.mysql.com) – Databases
+- <img width='25' height='25' src='https://img.stackshare.io/service/663/ElOjna20.png' alt='Ansible'/> [Ansible](http://www.ansible.com/) – Server Configuration and Automation
 - <img width='25' height='25' src='https://img.stackshare.io/service/586/n4u37v9t_400x400.png' alt='Docker'/> [Docker](https://www.docker.com/) – Virtual Machine Platforms & Containers
+- <img width='25' height='25' src='https://img.stackshare.io/service/2501/default_3cf1b307194b26782be5cb209d30360580ae5b3c.png' alt='Prometheus'/> [Prometheus](http://prometheus.io/) – Monitoring Tools
+- <img width='25' height='25' src='https://img.stackshare.io/service/6552/curl-logo.png' alt='cURL'/> [cURL](http://curl.haxx.se/) – File Transfer
 
 Full tech stack [here](/techstack.md)
 
@@ -42,7 +42,7 @@ Full tech stack [here](/techstack.md)
 # Tech Stack File
 ![](https://img.stackshare.io/repo.svg "repo") [Clivern/Mint](https://github.com/Clivern/Mint)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
-|45<br/>Tools used|01/05/24 <br/>Report generated|
+|45<br/>Tools used|02/29/24 <br/>Report generated|
 |------|------|
 </div>
 
